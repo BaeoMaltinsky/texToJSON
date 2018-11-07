@@ -28,7 +28,7 @@ def fetch(record):
 def main():
     specset = args[1]
     sickle = Sickle("http://export.arxiv.org/oai2")
-    records = sickle.ListRecords(metadataPrefix="oai_dc", set=spectset)
+    records = sickle.ListRecords(metadataPrefix="oai_dc", set=specset)
 
     pool = ThreadPool(10)
     pool.map(fetch, records)
