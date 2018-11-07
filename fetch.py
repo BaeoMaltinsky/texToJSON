@@ -22,7 +22,7 @@ def fetch(record):
             texfile = BytesIO(source.extractfile(f))
             tex = json.loads(run("./parser", stdin=texfile, capture_output=True))
             out['tex'][f.name] = tex
-        with open(identifier + ".json") as file:
+        with open('./out/' + identifier + ".json") as file:
             json.dump(out, file)
 
 def main():
@@ -32,6 +32,7 @@ def main():
 
     pool = ThreadPool(10)
     pool.map(fetch, records)
-
+    pool.close()
+    pool.join()
 
 main()
