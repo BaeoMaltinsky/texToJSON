@@ -1,4 +1,4 @@
-pype/
+venv/
 parser
 parser.dyn_hi
 parser.dyn_o
