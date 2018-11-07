@@ -50,8 +50,8 @@ def main():
     if not(isdir('out')):
         mkdir('out')
 
-    pool = ThreadPool(3)
-    pool.map(fetch, records)
+    pool = ThreadPool(10)
+    pool.imap_unordered(fetch, records)
     pool.close()
     pool.join()
 
