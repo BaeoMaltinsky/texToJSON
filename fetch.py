@@ -12,7 +12,7 @@ def fetch(record):
     metadata = record.metadata
     identifier = metadata['identifier'][0].split('/')[-1]
     source = TarFile(BytesIO(
-        urlopen("https://arxiv.org/e-print/" + indentifier).readlines()))
+        urlopen("https://arxiv.org/e-print/" + identifier).readlines()))
     texfiles = [file for file in source.getmembers() if '.tex' in file]
     if len(texfiles) == 0:
         return
