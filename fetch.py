@@ -1,7 +1,7 @@
 from sickle import Sickle
 import json
 from os import mkdir
-from urllib.request import openurl
+from urllib.request import urlopen
 from io import BytesIO
 from tarfile import TarFile
 from multiprocessing.dummy import Pool as ThreadPool
