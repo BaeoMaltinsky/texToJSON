@@ -17,14 +17,13 @@ def fetch(record):
     if len(texfiles) == 0:
         return
     else:
-        mkdir(identifier)
-        with open(indentifier + '/meta.json', 'w') as outfile:
-            json.dump(metadata, outfile)
+        out = {'Meta' : metadata, 'tex': dict()}
         for f in texfiles:
             texfile = BytesIO(source.extractfile(f))
-            with open("".join([indentifier, '/', f, '.json']), 'w') as out:
-                run("./parser", stdin=texfile, stdout=out)
-
+            tex = json.loads(run("./parser", stdin=texfile, capture_output=True))
+            out['tex'][f.name] = tex
+        with open(identifier + ".json") as file:
+            json.dump(out, file)
 
 def main():
     specset = args[1]
