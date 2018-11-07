@@ -4,9 +4,9 @@ from os import mkdir
 from urllib.request import urlopen
 from io import BytesIO
 from tarfile import TarFile
-from multiprocessing.dummy import Pool as ThreadPool
+# from multiprocessing.dummy import Pool as ThreadPool
 from subprocess import run
-from sys import argv as args
+from sys import argv
 
 def fetch(record):
     metadata = record.metadata
@@ -26,13 +26,13 @@ def fetch(record):
             json.dump(out, file)
 
 def main():
-    specset = args[1]
+    # specset = argv[1]
+    specset
     sickle = Sickle("http://export.arxiv.org/oai2")
     records = sickle.ListRecords(metadataPrefix="oai_dc", set=specset)
 
-    pool = ThreadPool(10)
-    pool.map(fetch, records)
-    pool.close()
-    pool.join()
+    for r in records:
+        fetch(r)
+
 
 main()
