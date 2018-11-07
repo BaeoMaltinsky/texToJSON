@@ -27,7 +27,7 @@ def fetch(record):
 
 def main():
     # specset = argv[1]
-    specset
+    specset = 'cs'
     sickle = Sickle("http://export.arxiv.org/oai2")
     records = sickle.ListRecords(metadataPrefix="oai_dc", set=specset)
 
