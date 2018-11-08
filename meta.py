@@ -1,3 +1,4 @@
+from sickle import Sickle
 import json
 from multiprocessing.dummy import Pool as ThreadPool
 from os import mkdir
