@@ -1,7 +1,5 @@
-venv/
 parser
 parser.dyn_hi
 parser.dyn_o
 parser.hi
 parser.o
-out/
